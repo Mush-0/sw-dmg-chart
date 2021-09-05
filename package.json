@@ -1,0 +1,12 @@
+{
+  "name": "dmg-chart",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Drawing Chart for VS-soulWorker game by calculating dmgDealt versus varying AB/BD ",
+  "main": "chart.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mush0",
+  "license": "ISC"
+}

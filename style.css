@@ -1,0 +1,13 @@
+.container {
+  height: 700px;
+}
+
+.bold {
+  font-weight: bold;
+}
+.large {
+  font-size: 1.6rem;
+}
+.underline {
+  text-decoration: underline;
+}

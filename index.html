@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link
+      rel="icon"
+      href="https://cdn.discordapp.com/emojis/835942031485304873.png"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="./userInput.js"></script>
+    <script
+      defer
+      type="module"
+      src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.min.js"
+      integrity="sha512-Wt1bJGtlnMtGP0dqNFH1xlkLBNpEodaiQ8ZN5JLA5wpc1sUlk/O5uuOMNgvzddzkpvZ9GLyYNa8w2s7rqiTk5Q=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <title>Damage Chart</title>
+  </head>
+  <body>
+    <h1>Damage Chart</h1>
+    <div class="user-input">
+      <form action="#" id="userInputs">
+        <label for="minAtk"
+          >Min Atk:
+          <input required type="number" id="minAtk" placeholder="21000" min="0"
+        /></label>
+        <label for="maxAtk"
+          >Max Atk:
+          <input required type="number" id="maxAtk" placeholder="27000" min="0"
+        /></label>
+        <label for="critDmg"
+          >Crit Dmg:
+          <input
+            required
+            type="number"
+            id="critDmg"
+            placeholder="35000"
+            min="0"
+        /></label>
+        <label for="skillMod"
+          >Skill Modifier:
+          <input required type="number" id="skillMod" placeholder="200" min="0"
+        /></label>
+        <label for="secondMod"
+          >Other Modifier:
+          <input required type="number" id="secondMod" placeholder="20" min="0"
+        /></label>
+        <div class="data-range">
+          <span class="bold underline">AB/BD Ranges:</span>
+          <br /><label for="steps"
+            >AB & BD number of steps:
+            <input required type="number" id="steps" placeholder="20" min="0"
+          /></label>
+          <br />
+          <label for="startAB"
+            >AB start:
+            <input
+              required
+              type="number"
+              id="startAB"
+              placeholder="30"
+              min="0"
+              step="any" /></label
+          ><label for="stepValueAB"
+            >AB step value:
+            <input
+              required
+              type="number"
+              id="stepValueAB"
+              placeholder="3"
+              min="0"
+              step="any"
+          /></label>
+          <br />
+          <label for="startBD"
+            >BD start:
+            <input
+              required
+              type="number"
+              id="startBD"
+              placeholder="112"
+              min="0"
+              step="any"
+          /></label>
+          <label for="stepValueBD"
+            >BD step value:
+            <input
+              required
+              type="number"
+              id="stepValueBD"
+              placeholder="5"
+              min="0"
+              step="any"
+          /></label>
+        </div>
+        <label for="selectBoss"
+          >Select Boss:
+          <select id="selectBoss">
+            <option value="AOV">Yorhaka(AOV)</option>
+            <option value="HH">Rhapakumba (HH)</option>
+            <optgroup label="Lunar Fall">
+              <option value="LF_queen">Junk Queen</option>
+              <option value="LF_edgar">Edgar</option>
+              <option value="LF_aculus">Aculus</option>
+            </optgroup>
+            <optgroup label="Violent Sun">
+              <option value="VS_P1">Flemma P1</option>
+              <option value="VS_P2">Flemma P2</option>
+              <option selected value="VS_P3">Flemma P3</option>
+            </optgroup>
+            <optgroup label="Lunar Fall HERO">
+              <option value="heroLF_queen">Hero Junk Queen</option>
+              <option value="heroLF_sword">Hero Queen Sword</option>
+              <option value="heroLF_follower">Hero Queen Follower</option>
+            </optgroup>
+          </select>
+        </label>
+        <br />
+        <input id="submit" type="submit" value="Draw Chart" />
+        <input id="reset" type="reset" value="Reset Values" />
+      </form>
+    </div>
+    <div class="container">
+      <canvas id="chart" style="height: 100%; width: 100%"></canvas>
+    </div>
+    <script type="module" src="./chart.js"></script>
+  </body>
+</html>
