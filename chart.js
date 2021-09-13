@@ -1,26 +1,19 @@
 import { calcDmgDealt } from "./dmgCalc.js";
 import { bossesData } from "./bossesData.js";
-import { mergedArray } from "./helpers.js";
-import { characterInfo, selectedBoss } from "./userInput.js";
-
-const mergedLabel = mergedArray(characterInfo.AB, characterInfo.BD);
 
 const canvas = document.getElementById("chart").getContext("2d");
 const chartSetup = {
   type: "line",
   data: {
-    labels: mergedLabel,
     datasets: [
       {
         label: "Changing Armor Break",
-        data: calcDmgDealt(bossesData[selectedBoss]).changeAB,
         backgroundColor: "rgba(255, 99, 132, 0.2)",
         borderColor: "rgba(255, 99, 132, 1)",
         borderWidth: 2,
       },
       {
         label: "Changing Boss Damage",
-        data: calcDmgDealt(bossesData[selectedBoss]).changeBD,
         backgroundColor: "rgba(99, 99, 132, 0.2)",
         borderColor: "rgba(99, 99, 132, 1)",
         borderWidth: 2,
@@ -64,6 +57,7 @@ function renamingTitle([chart]) {
 function renamingLabel(chart) {
   return chart.formattedValue + " Damage dealt";
 }
+
 // Creating chart updater to associate with new user input
 function updateChart(chart, newMergedLabel, newSelectedBoss) {
   // Change label with new values
@@ -116,5 +110,6 @@ function updateChart(chart, newMergedLabel, newSelectedBoss) {
 // };
 //#endregion
 
+// Bind the myChart object to the function so the const waits for other 2 inputs only
 const myChartUpdate = updateChart.bind(null, myChart);
-export { myChartUpdate };
+export { myChartUpdate, chartSetup };

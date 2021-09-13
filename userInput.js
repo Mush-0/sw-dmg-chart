@@ -1,5 +1,7 @@
 import { incArray, fixNumber, mergedArray } from "./helpers.js";
-import { myChartUpdate } from "./chart.js";
+import { myChartUpdate, chartSetup } from "./chart.js";
+import { calcDmgDealt } from "./dmgCalc.js";
+import { bossesData } from "./bossesData.js";
 // Initial Character info
 const minAtk = 21000;
 const maxAtk = 27000;
@@ -11,6 +13,11 @@ const AB = incArray(0.3, 0.03, 20);
 const BD = incArray(1.12, 0.05, 20);
 let characterInfo = { avgAtk, critDmg, skillMod, mod2, AB, BD };
 let selectedBoss = "VS_P3";
+
+// Show initial chart
+const mergedLabel = mergedArray(characterInfo.AB, characterInfo.BD);
+
+myChartUpdate(mergedLabel, selectedBoss);
 
 // Taking User inputs
 const form = document.getElementById("userInputs");
@@ -43,10 +50,21 @@ function handleInput(e) {
     AB: incArray(startAB / 100, stepAB / 100, steps),
     BD: incArray(startBD / 100, stepBD / 100, steps),
   };
-  console.log("New Character info: ", characterInfo);
+
   const mergedLabel = mergedArray(characterInfo.AB, characterInfo.BD);
   myChartUpdate(mergedLabel, selectedBoss);
+
+  // Log new data, maybe we need it during user facing some issues
+  console.group("New data");
+  console.log("New Character info: ", characterInfo);
+  console.log("character info:", characterInfo);
+  console.groupEnd();
 }
+
+// Log initial data, maybe we need it during user facing some issues
+console.group("initial data");
 console.log("character info:", characterInfo);
+console.log("Damage dealt:", calcDmgDealt(bossesData.VS_P1));
+console.groupEnd();
 
 export { characterInfo, selectedBoss };

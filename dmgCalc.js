@@ -1,9 +1,8 @@
-import { bossesData } from "./bossesData.js";
 import { fixNumber } from "./helpers.js";
 import { characterInfo } from "./userInput.js";
 
 // 1.0 Calculate Boss defense rating
-// boss Data is specific to boss e.g (bossesData.VS_P1)
+// boss entered here is specific to boss e.g (bossesData.VS_P1)
 function calcDefRate(boss, AB_value) {
   // Add restriction so AB cant go past 100%
   AB_value = AB_value > 1 ? 1 : AB_value;
@@ -52,5 +51,4 @@ function calcDmgDealt(bossData) {
   return dmgDealt;
 }
 
-console.log("Damage dealt:", calcDmgDealt(bossesData.VS_P1));
 export { calcDmgDealt };
