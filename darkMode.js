@@ -1,3 +1,4 @@
+import { toggleChartMode } from "./chart.js";
 /**************************************
  * Toggle dark mode on/off
  */
@@ -7,6 +8,8 @@ function darkMode(e) {
   document.querySelector(".white").classList.toggle("hidden");
   document.querySelector(".black").classList.toggle("hidden");
   document.querySelector(".ball").classList.toggle("moved-ball");
+  // Toggle chart dark mode with the page
+  toggleChartMode();
   const darkMode = document.body.classList.contains("dark-mode");
   let modeText = document.querySelector(".toggle-container h4");
   try {
@@ -35,6 +38,8 @@ function darkMode(e) {
       document.querySelector(".black").classList.add("hidden");
       document.querySelector(".ball").classList.add("moved-ball");
       document.querySelector(".toggle-container h4").textContent = "Light Mode";
+      // Toggle chart dark mode with the page for the 1st time
+      toggleChartMode();
     } else {
       document.body.classList.remove("dark-mode");
       document.querySelector(".white").classList.add("hidden");

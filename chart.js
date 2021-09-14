@@ -8,14 +8,14 @@ const chartSetup = {
     datasets: [
       {
         label: "Changing Armor Break",
-        backgroundColor: "rgba(255, 99, 132, 0.2)",
-        borderColor: "rgba(255, 99, 132, 1)",
+        backgroundColor: "rgba(255, 100, 132, 0.2)",
+        borderColor: "rgba(255, 100, 132, 1)",
         borderWidth: 2,
       },
       {
         label: "Changing Boss Damage",
-        backgroundColor: "rgba(99, 99, 132, 0.2)",
-        borderColor: "rgba(99, 99, 132, 1)",
+        backgroundColor: "rgba(0, 0, 253, 0.2)",
+        borderColor: "rgba(0, 0, 253, 1)",
         borderWidth: 2,
       },
     ],
@@ -73,6 +73,24 @@ function updateChart(chart, newMergedLabel, newSelectedBoss) {
   // Invoke the update
   chart.update();
 }
+
+function toggleDarkModeChart(chart) {
+  if ("rgba(0,0,0,0.1)" === chart.options.scales.y.grid.color) {
+    chart.options.plugins.legend.labels.color = "rgba(245, 245, 245,1)";
+    chart.options.scales.y.ticks.color = "rgba(245, 245, 245,1)";
+    chart.options.scales.y.grid.color = "rgba(245, 245, 245,0.3)";
+    chart.options.scales.x.ticks.color = "rgba(245, 245, 245,1)";
+    chart.options.scales.x.grid.color = "rgba(245, 245, 245,0.3)";
+  } else {
+    chart.options.plugins.legend.labels.color = "#666";
+    chart.options.scales.y.ticks.color = "#666";
+    chart.options.scales.y.grid.color = "rgba(0,0,0,0.1)";
+    chart.options.scales.x.ticks.color = "#666";
+    chart.options.scales.x.grid.color = "rgba(0,0,0,0.1)";
+  }
+  chart.update();
+}
+
 // #region Code that might be useful in "OTHER" sites
 // If we need to add scales use this inside the myChart above
 // myChart.options.scales = {
@@ -112,4 +130,5 @@ function updateChart(chart, newMergedLabel, newSelectedBoss) {
 
 // Bind the myChart object to the function so the const waits for other 2 inputs only
 const myChartUpdate = updateChart.bind(null, myChart);
-export { myChartUpdate, chartSetup };
+const toggleChartMode = toggleDarkModeChart.bind(null, myChart);
+export { myChartUpdate, chartSetup, toggleChartMode };
