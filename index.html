@@ -3,20 +3,45 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Favicon for the site -->
     <link
       rel="icon"
       href="https://cdn.discordapp.com/emojis/835942031485304873.png"
       type="image/x-icon"
     />
+
     <link rel="stylesheet" href="style.css" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"
+    />
     <script defer src="./chart.min.js"></script>
     <script defer type="module" src="./userInput.js"></script>
+    <script defer src="./darkMode.js"></script>
     <title>Damage Chart</title>
   </head>
   <body>
-    <h1>Damage Chart</h1>
-    <div class="user-input">
+    <div class="toggle-container" role="toggle-dark-mode">
+      <h4 class="center">Dark Mode</h4>
+      <div class="fixed-container">
+        <input
+          class="hidden"
+          type="checkbox"
+          name="toggle-dark"
+          id="dark-mode"
+        />
+        <label class="pointer no-margin" for="dark-mode"
+          ><div class="white hidden"></div>
+          <div class="ball"></div>
+          <div class="black"></div
+        ></label>
+      </div>
+    </div>
+
+    <h1 class="center under-line">Damage Chart</h1>
+
+    <div class="user-input container-fluid">
       <form action="#" id="userInputs">
         <label for="minAtk"
           >Min Atk:
@@ -44,7 +69,7 @@
           <input required type="number" id="secondMod" placeholder="20" min="0"
         /></label>
         <div class="data-range">
-          <span class="bold underline">AB/BD Ranges:</span>
+          <span class="bold large under-line">AB/BD Ranges:</span>
           <br /><label for="steps"
             >AB & BD number of steps:
             <input required type="number" id="steps" placeholder="20" min="0"
@@ -114,13 +139,81 @@
           </select>
         </label>
         <br />
-        <input id="submit" type="submit" value="Draw Chart" />
-        <input id="reset" type="reset" value="Reset Values" />
+        <div class="container-fluid d-flex justify-content-center center">
+          <input
+            class="btn btn-success btn-lg"
+            id="submit"
+            type="submit"
+            value="Draw Chart"
+          />
+          <input
+            class="btn btn-danger btn-lg"
+            id="reset"
+            type="reset"
+            value="Reset Values"
+          />
+        </div>
       </form>
     </div>
+    <br />
     <div class="container">
       <canvas id="chart" style="height: 100%; width: 100%"></canvas>
     </div>
-    
+    <div class="container-fluid guide">
+      <h3 class="under-line">How to use the tool?</h3>
+      <h5>
+        The initial data i provided to draw the chart is from a real character
+        and it appears inside the fields so you can have some idea about values.
+      </h5>
+      <h5>
+        1-You need to fill in all the inputs below with correct number
+        formatting:
+      </h5>
+      <ul>
+        <li>
+          Don't use percentage symbol "%", just enter the number without it (
+          <span class="wrong">AB:30%</span> ->
+          <span class="correct">AB:30 </span>).
+        </li>
+        <li>
+          For decimal fractions don't use comma separator "," instead use the
+          dot separator "." and note that only AB/BD start and step values
+          accept decimal fractions (
+          <span class="wrong">AB step value:3,5</span> ->
+          <span class="correct">AB step value:3.5 </span>).
+        </li>
+      </ul>
+      <h5>
+        2-Here are the terminologies that may seem "vague" and what they mean:
+      </h5>
+      <ul>
+        <li>
+          Skill Modifier: The number written on the skill description (Skill
+          that does 515% damage -> 515).
+        </li>
+        <li>
+          Other Modifier: Represent any other modifier user wants to add (Desire
+          awakening with extra 20% damage -> 20).
+        </li>
+        <li>
+          AB & BD number of steps: Used to calculate how many points (steps)
+          needed on the chart X-Axis.
+        </li>
+        <li>
+          AB/BD step value: The increase between two consecutive points (steps)
+          on the chart X-Axis (AB and BD can have different starts and/or step
+          value).
+        </li>
+      </ul>
+      <h5>
+        3-When varying AB values the "BD start" is used in every AB value to
+        calculate damage dealt.
+      </h5>
+      <h5>
+        4-When varying BD values the "AB start" is used in every BD value to
+        calculate damage dealt.
+      </h5>
+      <hr />
+    </div>
   </body>
 </html>

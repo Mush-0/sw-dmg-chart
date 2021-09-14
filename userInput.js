@@ -21,6 +21,7 @@ myChartUpdate(mergedLabel, selectedBoss);
 
 // Taking User inputs
 const form = document.getElementById("userInputs");
+const myCanva = document.getElementById("chart");
 form.addEventListener("submit", handleInput);
 
 function handleInput(e) {
@@ -53,6 +54,8 @@ function handleInput(e) {
 
   const mergedLabel = mergedArray(characterInfo.AB, characterInfo.BD);
   myChartUpdate(mergedLabel, selectedBoss);
+
+  myCanva.scrollIntoView({ behavior: "smooth", block: "end" });
 
   // Log new data, maybe we need it during user facing some issues
   console.group("New data");

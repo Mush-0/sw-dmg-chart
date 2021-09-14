@@ -1,13 +1,113 @@
-.container {
-  height: 700px;
+/* ********** */
+/* Base rules */
+/* ********** */
+* {
+  box-sizing: border-box;
 }
 
+/* ***************** */
+/* Typography rules */
+/* ***************** */
 .bold {
   font-weight: bold;
 }
 .large {
   font-size: 1.6rem;
 }
-.underline {
+.under-line {
   text-decoration: underline;
+}
+/* ************ */
+/* Layout rules */
+/* ************ */
+.no-margin {
+  margin: 0 !important;
+}
+.container {
+  height: 700px;
+}
+.center {
+  text-align: center;
+}
+label {
+  margin: 10px 10px 10px 0px;
+}
+input[type="number"] {
+  width: 10rem;
+}
+/* ************ */
+/* Colors rules */
+/* ************ */
+input.btn {
+  color: #fff !important;
+  margin: 2rem;
+}
+.correct {
+  color: rgb(56, 211, 56);
+  /* font-weight: bold; */
+}
+.wrong {
+  color: rgb(211, 56, 56);
+  /* font-weight: bold; */
+  text-decoration: line-through;
+}
+
+/* ***************** */
+/* Dark Mode toggler */
+/* ***************** */
+.dark-mode {
+  background-color: #242424;
+  color: whitesmoke;
+}
+
+input {
+  color: black !important;
+}
+select {
+  color: black !important;
+}
+
+/* checkbox rules */
+body {
+  transition: all 1s ease;
+}
+.toggle-container {
+  position: fixed;
+  right: 5rem;
+}
+.fixed-container {
+  position: fixed;
+  top: 6rem;
+  right: 7rem;
+}
+.pointer {
+  cursor: pointer;
+}
+.white {
+  background-color: white;
+  width: 50px;
+  height: 30px;
+  border-radius: 15px;
+}
+.black {
+  background-color: #242424;
+  width: 50px;
+  height: 30px;
+  border-radius: 15px;
+}
+.ball {
+  position: absolute;
+  top: 0px;
+  background-color: gray;
+  width: 30px;
+  height: 30px;
+  border: rgb(0, 0, 0) solid 1px;
+  border-radius: 15px;
+  transition: all 1s ease;
+}
+.moved-ball {
+  transform: translateX(20px);
+}
+.hidden {
+  display: none;
 }
