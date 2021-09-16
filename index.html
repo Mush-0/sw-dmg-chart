@@ -159,7 +159,9 @@
     <div class="container">
       <canvas id="chart" style="height: 100%; width: 100%"></canvas>
     </div>
+
     <div class="container-fluid guide">
+      <hr />
       <h3 class="under-line">How to use the tool?</h3>
       <h5>
         The initial data i provided to draw the chart is from a real character
@@ -207,13 +209,77 @@
       </ul>
       <h5>
         3-When varying AB values the "BD start" is used in every AB value to
-        calculate damage dealt.
+        calculate damage dealt and vice versa when varying BD, more on that
+        below.
       </h5>
-      <h5>
-        4-When varying BD values the "AB start" is used in every BD value to
-        calculate damage dealt.
-      </h5>
+    </div>
+    <div class="info-container container-fluid">
       <hr />
+      <h3 class="text-left under-line">How the calculations are made?</h3>
+
+      <p>
+        I've used the damage formulas from
+        <a
+          href="https://docs.google.com/spreadsheets/d/1_8-byaVGBU6MyauYCY73xVc6s1ov_H8aEV_jdE7aGuM/edit#gid=924213868"
+          target="_blank"
+          >Global SoulArchive
+        </a>
+        and the boss defense values i got from "EXA|Stinction#9845" on discord
+        (THANKS A LOT)
+      </p>
+
+      <p class="under-line">Here are my calculation steps:</p>
+      <p>
+        While calculating AB damage dealt values i use "BD start" as a fixed
+        value and change AB starting from "AB start" with increments of "AB step
+        value" until i reach total of values provided in "number of steps"
+        <br />
+        Then when calculating BD damage dealt i use "AB start" as a fixed value
+        and change BD starting from "BD start" with increments of "BD step
+        value" until i reach total of values provided in "number of steps"
+      </p>
+      <ul>
+        <li>
+          Calculate the choosen boss defense rate for each AB value (Boss
+          Defense Table values for AB=0%)
+        </li>
+        <img
+          class="small"
+          src="./images/DefRate.png"
+          alt="Defense rate formula"
+        />
+        <li>
+          Then calculate damage dealt using the character stats and defense rate
+          in this formula, the BD used is "BD start"
+        </li>
+        <img
+          class="small"
+          src="./images/CriticalHit.png"
+          alt="Critical Hit formula"
+        />
+        <li>
+          Finally recalculate the damage dealt again while changing BD value and
+          using the EnemyDefRate value that corresponds with "AB Start" value.
+        </li>
+      </ul>
+      <img
+        class="large center"
+        src="./images/BossDef.png"
+        alt="Boss defence list"
+      />
+    </div>
+    <div class="my-info container-fluid">
+      <hr />
+      <h3 class="under-line">Contact me</h3>
+      Want to leave me a comment or a helpful note ? Have u found any bugs or
+      problems ? find me on discord user:
+      <a target="_blank" href="https://discord.com/users/287203639486054412"
+        >Musho- (•̀ᴗ•́)ง#7885</a
+      >
+      or
+      <a target="_blank" href="https://github.com/Mush-0/sw-dmg-chart/issues"
+        >github</a
+      >
     </div>
   </body>
 </html>
